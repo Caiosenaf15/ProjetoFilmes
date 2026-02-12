@@ -2,7 +2,6 @@
 
 class Database {
 
-mysql -h metro.proxy.rlwy.net -u root -p EkvKdpTciGkdejlboOnAhXrDeaHNsTJu --port 54051 --protocol=TCP railway
     $host = 'metro.proxy.rlwy.net';
     $port = '54051';
     $db   = 'railway';
