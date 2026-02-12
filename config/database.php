@@ -1,12 +1,11 @@
 <?php
 
 class Database {
-
-    $host = 'metro.proxy.rlwy.net';
-    $port = '54051';
-    $db   = 'railway';
-    $user = 'root';
-    $pass = 'EkvKdpTciGkdejlboOnAhXrDeaHNsTJu';
+    private $host = 'metro.proxy.rlwy.net';
+    private $port = '54051';
+    private $db   = 'railway';
+    private $user = 'root';
+    private $pass = 'EkvKdpTciGkdejlboOnAhXrDeaHNsTJu';
 
     public function connect(){
         try{
