@@ -9,7 +9,7 @@ class Database {
 
     public function connect(){
         try{
-            $conn = new PDO("mysql:host={$this->host};dbname={$this->db}",
+            $conn = new PDO("mysql:host={$this->host};port={$this->port};dbname={$this->db}",
             $this->user,
             $this->pass);
 
