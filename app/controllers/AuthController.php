@@ -113,11 +113,7 @@ class AuthController {
 
         } catch (PDOException $e) {
 
-            if ($e->errorInfo[1] == 1062) {
-                $_SESSION['flash'] = "Email já cadastrado.";
-            } else {
-                $_SESSION['flash'] = "Erro ao cadastrar.";
-            }
+            $_SESSION['flash'] = "Erro: " . $e->getMessage();
 
             header("Location: /register");
             exit;
