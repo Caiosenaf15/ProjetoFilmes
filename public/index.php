@@ -7,5 +7,5 @@ session_set_cookie_params([
 session_start();
 $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-require_once "../../routes/web.php";
+require_once "ProjetoFilmes/routes/web.php";
 ?>
