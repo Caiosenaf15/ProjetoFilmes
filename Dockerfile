@@ -1,16 +1,13 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
-# Desativa qualquer outro MPM
-RUN a2dismod mpm_event || true
-RUN a2dismod mpm_worker || true
-RUN a2enmod mpm_prefork
-
-# Instala PDO MySQL
+# Instala extensões
 RUN docker-php-ext-install pdo pdo_mysql
 
-# Copia projeto
-COPY . /var/www/html/
+# Define diretório
+WORKDIR /app
 
-RUN chown -R www-data:www-data /var/www/html
+# Copia arquivos
+COPY . .
 
-EXPOSE 80
+# Comando para rodar servidor
+CMD php -S 0.0.0.0:$PORT
