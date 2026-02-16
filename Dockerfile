@@ -1,12 +1,16 @@
 FROM php:8.2-apache
 
-# Instala apenas as extensões necessárias
+# Desativa qualquer outro MPM
+RUN a2dismod mpm_event || true
+RUN a2dismod mpm_worker || true
+RUN a2enmod mpm_prefork
+
+# Instala PDO MySQL
 RUN docker-php-ext-install pdo pdo_mysql
 
-# Copia os arquivos do projeto
+# Copia projeto
 COPY . /var/www/html/
 
-# Permissões
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
