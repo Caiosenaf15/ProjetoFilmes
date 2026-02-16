@@ -1,11 +1,11 @@
 <?php
 
 class Database {
-        $host = $_ENV['MYSQLHOST'];
-        $port = $_ENV['MYSQLPORT'];
-        $db   = $_ENV['MYSQLDATABASE'];
-        $user = $_ENV['MYSQLUSER'];
-        $pass = $_ENV['MYSQLPASSWORD'];
+        private $host = $_ENV['MYSQLHOST'];
+        private $port = $_ENV['MYSQLPORT'];
+        private $db   = $_ENV['MYSQLDATABASE'];
+        private $user = $_ENV['MYSQLUSER'];
+        private $pass = $_ENV['MYSQLPASSWORD'];
 
 
     public function connect(){
