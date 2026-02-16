@@ -1,11 +1,12 @@
 <?php
 
 class Database {
-    private $host = 'metro.proxy.rlwy.net';
-    private $port = '54051';
-    private $db   = 'railway';
-    private $user = 'root';
-    private $pass = 'EkvKdpTciGkdejlboOnAhXrDeaHNsTJu';
+        $host = $_ENV['MYSQLHOST'];
+        $port = $_ENV['MYSQLPORT'];
+        $db   = $_ENV['MYSQLDATABASE'];
+        $user = $_ENV['MYSQLUSER'];
+        $pass = $_ENV['MYSQLPASSWORD'];
+
 
     public function connect(){
         try{
