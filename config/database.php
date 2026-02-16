@@ -1,5 +1,4 @@
 <?php
-
 class Database {
 
     private $host;
@@ -9,11 +8,11 @@ class Database {
     private $pass;
 
     public function __construct() {
-        $this->host = $_ENV['MYSQLHOST'];
-        $this->port = $_ENV['MYSQLPORT'];
-        $this->db   = $_ENV['MYSQLDATABASE'];
-        $this->user = $_ENV['MYSQLUSER'];
-        $this->pass = $_ENV['MYSQLPASSWORD'];
+        $this->host = getenv('MYSQLHOST');
+        $this->port = getenv('MYSQLPORT');
+        $this->db   = getenv('MYSQLDATABASE');
+        $this->user = getenv('MYSQLUSER');
+        $this->pass = getenv('MYSQLPASSWORD');
     }
 
     public function connect() {
@@ -33,3 +32,4 @@ class Database {
         }
     }
 }
+
