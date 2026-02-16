@@ -14,6 +14,8 @@ class Database {
         $this->user = getenv('MYSQLUSER');
         $this->pass = getenv('MYSQLPASSWORD');
     }
+var_dump($this->host, $this->port, $this->db, $this->user);
+exit;
 
     public function connect() {
         try {
