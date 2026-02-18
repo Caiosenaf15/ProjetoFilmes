@@ -13,6 +13,7 @@ class Database {
         $this->db   = getenv('MYSQLDATABASE');
         $this->user = getenv('MYSQLUSER');
         $this->pass = getenv('MYSQLPASSWORD');
+        
     }
 
 
