@@ -1,3 +1,7 @@
+<?php
+require_once '../app/helpers/helper.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,7 +149,7 @@
     <div class="nav-right">
         <?php if (isset($_SESSION['username'])): ?>
             <span class="welcome">
-                Bem-vindo, <?= htmlspecialchars($_SESSION['username']) ?>
+                Bem-vindo, <?= htmlspecialchars(userFormat($_SESSION['username'])) ?>
             </span>
 
             <div class="user-menu">

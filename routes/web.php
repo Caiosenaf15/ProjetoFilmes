@@ -26,11 +26,15 @@ switch($url) {
         }
         break;
 
-        case 'logout':
-            session_destroy();
-            header("Location: /");
-            exit;
-            break;
+    case 'logout':
+        session_destroy();
+        header("Location: /");
+        exit;
+        break;
+
+    case 'listaFilmes':
+        require_once "../app/views/paginaListaFilmes.php";
+        break;
 
     case 'register':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

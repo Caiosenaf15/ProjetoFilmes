@@ -8,24 +8,36 @@ class Database {
     private $pass;
 
     public function __construct() {
-        $this->host = getenv('MYSQLHOST');
-        $this->port = getenv('MYSQLPORT');
-        $this->db   = getenv('MYSQLDATABASE');
-        $this->user = getenv('MYSQLUSER');
-        $this->pass = getenv('MYSQLPASSWORD');
-        
+
+        // Detecta se está no Railway
+        if (getenv('MYSQLHOST')) {
+
+            // PRODUÇÃO (Railway)
+            $this->host = getenv('MYSQLHOST');
+            $this->port = getenv('MYSQLPORT');
+            $this->db   = getenv('MYSQLDATABASE');
+            $this->user = getenv('MYSQLUSER');
+            $this->pass = getenv('MYSQLPASSWORD');
+
+        } else {
+
+            // LOCAL
+            $this->host = 'localhost';
+            $this->port = '3306';
+            $this->db   = 'bdfilmes';
+            $this->user = 'root';
+            $this->pass = '';
+        }
     }
 
-
     public function connect() {
-        try {
-            $conn = new PDO(
-                "mysql:host={$this->host};port={$this->port};dbname={$this->db}",
-                $this->user,
-                $this->pass
-            );
 
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->db};charset=utf8mb4";
+
+            $conn = new PDO($dsn, $this->user, $this->pass, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            ]);
 
             return $conn;
 
@@ -34,4 +46,3 @@ class Database {
         }
     }
 }
-
