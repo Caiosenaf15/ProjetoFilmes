@@ -1,5 +1,5 @@
 <?php
-require_once "../app/helpers/helper.php";
+require_once __DIR__ . "/../helpers/helper.php";
 
 if (!isset($_SESSION['user'])) {
     header("Location: /login");

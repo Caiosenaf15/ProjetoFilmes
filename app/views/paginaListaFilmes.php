@@ -1,6 +1,6 @@
 <?php 
-    require_once '../app/helpers/helper.php';
-    require_once '../app/controllers/TmdbService.php';
+    require_once __DIR__ . '/../helpers/helper.php';
+    require_once __DIR__ . '/../controllers/TmdbService.php';
 
     $genId = $_GET['genero'] ?? '';
     ob_start(); 

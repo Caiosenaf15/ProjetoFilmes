@@ -1,11 +1,19 @@
-<?php 
+<?php
+
 session_set_cookie_params([
     'httponly' => true,
     'secure' => false,
     'samesite' => 'Strict'
 ]);
 session_start();
-$url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-require_once "../routes/web.php";
+$url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+
+require_once __DIR__ . '/../routes/web.php';
+
 ?>

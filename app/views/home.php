@@ -1,4 +1,5 @@
-<?php require_once '../app/helpers/helper.php';
+<?php 
+require_once __DIR__ . '/../helpers/helper.php';
 ob_start(); 
 ?>
 

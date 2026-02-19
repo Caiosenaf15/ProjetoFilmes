@@ -1,5 +1,5 @@
 <?php
-require_once '../app/helpers/helper.php';
+require_once __DIR__ . '/../helpers/helper.php';
 ?>
 
 <!DOCTYPE html>
@@ -143,7 +143,7 @@ require_once '../app/helpers/helper.php';
 <?php if (empty($hideNavbar)) : ?>
 <nav class="navbar">
     <div class="logo">
-        MeuSite
+        <a href="/">Meu Logo</a>
     </div>
 
     <div class="nav-right">

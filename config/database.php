@@ -9,25 +9,12 @@ class Database {
 
     public function __construct() {
 
-        // Detecta se está no Railway
-        if (getenv('MYSQLHOST')) {
-
-            // PRODUÇÃO (Railway)
-            $this->host = getenv('MYSQLHOST');
-            $this->port = getenv('MYSQLPORT');
-            $this->db   = getenv('MYSQLDATABASE');
-            $this->user = getenv('MYSQLUSER');
-            $this->pass = getenv('MYSQLPASSWORD');
-
-        } else {
-
-            // LOCAL
-            $this->host = 'localhost';
-            $this->port = '3306';
-            $this->db   = 'bdfilmes';
-            $this->user = 'root';
-            $this->pass = '';
-        }
+            $this->host = $_ENV['MYSQLHOST'] ?? null;
+            $this->port = $_ENV['MYSQLPORT'] ?? null;
+            $this->db   = $_ENV['MYSQLDATABASE'] ?? null;
+            $this->user = $_ENV['MYSQLUSER'] ?? null;
+            $this->pass = $_ENV['MYSQLPASSWORD'] ?? null;
+            
     }
 
     public function connect() {

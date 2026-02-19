@@ -1,14 +1,19 @@
 <?php
     class TmdbService{
+
+    private $token;
+
+     public function __construct() {
+        $this->token = $_ENV['TMDB_API_TOKEN'] ?? '';
+    }
         
     public function listaGeneros(){
-        $token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTAyNmY1MzBmNzk0N2YxMDI2OTY1M2MxYjg2NmQ3NCIsIm5iZiI6MTc3MDgyNjQxNi42MTEsInN1YiI6IjY5OGNhYWIwYTViOTU5NDFkODBlNmIyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l5mHrgrh2j3BAtS63eRlsrZyCQlH0CLw03ykUnPoxWU';
 
         $options = [
             "http" => [
                 "method" => "GET",
                 "header" => [
-                    "Authorization: Bearer $token",
+                    "Authorization: Bearer $this->token",
                     "Accept: application/json"
                 ]
             ]
@@ -33,7 +38,12 @@
         }
 
         return $lista;
-            }
+    }
     
+    public function filmesPopulares(){
+
+
+    }
+
     }
 ?>
