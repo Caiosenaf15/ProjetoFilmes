@@ -1,14 +1,19 @@
 FROM php:8.2-cli
 
-# Instala extensões
-RUN docker-php-ext-install pdo pdo_mysql
+# Instalar dependências do sistema
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libzip-dev \
+    && docker-php-ext-install zip pdo pdo_mysql \
+    && apt-get clean
 
-# Instala Composer
+# Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-# Copia composer primeiro (melhor prática)
+# Copia apenas composer primeiro (melhor cache)
 COPY composer.json composer.lock ./
 
 # Instala dependências
