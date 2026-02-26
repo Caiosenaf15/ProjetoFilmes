@@ -30,10 +30,22 @@ switch($url) {
         header("Location: /");
         exit;
 
-    case 'listaFilmes':
-        require_once __DIR__ . '/../app/views/paginaListaFilmes.php';
+    case 'categorias':
+        require_once __DIR__ . '/../app/views/categorias.php';
         break;
 
+    case 'lancamentos':
+        require_once __DIR__ . '/../app/views/lancamentos.php';
+        break;
+
+    case 'filmesPopulares':
+        require_once __DIR__ . '/../app/views/filmesPopulares.php';
+        break;
+
+    case 'buscar':
+        require_once __DIR__ . '/../app/views/pesquisa.php';
+        break;
+    
     case 'register':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require_once __DIR__ . '/../app/controllers/AuthController.php';
@@ -59,6 +71,11 @@ switch($url) {
     case 'profile':
         require_once __DIR__ . '/../app/views/profile.php';
         break;
+
+    case 'api/movie_action':
+    case 'api/movie_action.php':
+        require_once __DIR__ . '/../app/controllers/UserMovieController.php';
+        exit;
     
     default:
         echo "Página não encontrada";

@@ -16,8 +16,6 @@
 
 <?php endif; ?>
 
-
-<?php if (isset($_SESSION['username'])): ?>
     <?php
         $tmdb = new TmdbService();
         $generos = $tmdb->listaGeneros();
@@ -30,12 +28,6 @@
         <?php endforeach; ?>
     </ul>
     <p><?= $genId; ?></p>
-
-<?php else: ?>
-    <a href="/login">
-            <button>Login</button>
-        </a>
-<?php endif; ?>
 
 <?php
 $content = ob_get_clean();
