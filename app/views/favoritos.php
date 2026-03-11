@@ -13,7 +13,7 @@ if( isset($_SESSION['username']) ){
     $tmdb = new TmdbService();
     
     foreach($dataFavoritos as $fav){
-        if($fav['favorito'] === 1){
+        if($fav['favorito'] == 1){
             $filmesFavoritados[] = $tmdb->buscarFilme($fav['movie_id']);
         }
     }
