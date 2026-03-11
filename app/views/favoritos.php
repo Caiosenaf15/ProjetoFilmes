@@ -6,7 +6,8 @@ require_once __DIR__ . '/../controllers/TmdbService.php';
 $filmesFavoritados = [];
 
 if( isset($_SESSION['username']) ){
-
+    echo 'entrou if';
+    die();
     $con = new favController();
     $dataFavoritos = $con->favoritos();
     $showFilters = false;
