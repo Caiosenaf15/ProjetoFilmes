@@ -13,8 +13,6 @@ require_once __DIR__ . '/../helpers/helper.php';
 
 <style>
 
-/* ================= LOGIN ================= */
-
 .bg-login {
     background: linear-gradient(135deg, #7a528d, #255994);
     height: 100vh;
@@ -43,7 +41,6 @@ require_once __DIR__ . '/../helpers/helper.php';
     font-weight: 500;
 }
 
-/* ================= NAVBAR IOS ================= */
 
 .ios-navbar {
     position: sticky;
@@ -63,7 +60,6 @@ require_once __DIR__ . '/../helpers/helper.php';
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Left */
 
 .nav-left {
     display: flex;
@@ -90,8 +86,6 @@ require_once __DIR__ . '/../helpers/helper.php';
     transform: translateY(-1px);
 }
 
-/* Search */
-/* ================= SEARCH IOS ================= */
 
 .search-wrapper {
     position: relative;
@@ -159,7 +153,6 @@ require_once __DIR__ . '/../helpers/helper.php';
     background: rgba(0,0,0,0.08);
 }
 
-/* Right */
 
 .nav-right {
     display: flex;
@@ -168,7 +161,6 @@ require_once __DIR__ . '/../helpers/helper.php';
     color: black;
 }
 
-/* Avatar */
 
 .user-menu {
     position: relative;
@@ -190,7 +182,6 @@ require_once __DIR__ . '/../helpers/helper.php';
     transform: scale(1.08);
 }
 
-/* Dropdown */
 
 .dropdown-ios {
     position: absolute;
@@ -228,7 +219,6 @@ require_once __DIR__ . '/../helpers/helper.php';
     background: #f5f5f7;
 }
 
-/* Toast */
 
 .custom_toast {
     position: fixed;
