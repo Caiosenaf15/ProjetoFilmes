@@ -3,6 +3,7 @@ require_once __DIR__ . '/../helpers/helper.php';
 require_once __DIR__ . '/../controllers/favController.php';
 require_once __DIR__ . '/../controllers/TmdbService.php';
 
+$filmesFavoritados = [];
 
 if( isset($_SESSION['username']) ){
 
