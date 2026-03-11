@@ -4,8 +4,7 @@ require_once __DIR__ . '/../controllers/favController.php';
 require_once __DIR__ . '/../controllers/TmdbService.php';
 
 $filmesFavoritados = [];
-var_dump($_SESSION);
-    die();
+
 if( isset($_SESSION['username']) ){
 
     $con = new favController();
