@@ -4,15 +4,15 @@ require_once __DIR__ . '/../controllers/favController.php';
 require_once __DIR__ . '/../controllers/TmdbService.php';
 
 $filmesFavoritados = [];
-
+var_dump($_SESSION);
+    die();
 if( isset($_SESSION['username']) ){
 
     $con = new favController();
     $dataFavoritos = $con->favoritos();
     $showFilters = false;
     $tmdb = new TmdbService();
-    var_dump($dataFavoritos);
-    die();
+    
     foreach($dataFavoritos as $fav){
         if($fav['favorito'] == 1){
             $filmesFavoritados[] = $tmdb->buscarFilme($fav['movie_id']);
