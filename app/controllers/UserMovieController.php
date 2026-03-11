@@ -16,7 +16,6 @@ $movieId = isset($_POST['movie_id']) ? (int) $_POST['movie_id'] : (isset($_GET['
 $action  = $_POST['action'] ?? $_GET['action'] ?? null;
 $value   = isset($_POST['value']) ? (int) $_POST['value'] : (isset($_GET['value']) ? (int) $_GET['value'] : null);
 
-// GET: retorna o estado do filme (favorito, assistido, nota)
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $movieId) {
     try {
         $stmt = $pdo->prepare("SELECT favorito, assistido, nota FROM user_movies WHERE user_id = ? AND movie_id = ?");
@@ -39,7 +38,6 @@ if (!$movieId || !$action) {
 }
 
 try {
-    // garante que exista a linha do filme do usuário
     $stmt = $pdo->prepare("SELECT id FROM user_movies WHERE user_id = ? AND movie_id = ?");
     $stmt->execute([$userId, $movieId]);
 

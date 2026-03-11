@@ -6,6 +6,74 @@
      public function __construct() {
         $this->token = $_ENV['TMDB_API_TOKEN'] ?? '';
     }
+
+    public function requestToken(){
+        $options = [
+            "http" => [
+                "method" => "GET",
+                "header" => [
+                    "Authorization: Bearer $this->token",
+                    "Accept: application/json"
+                ]
+            ]
+        ];
+
+        $context = stream_context_create($options);
+
+        $response = file_get_contents(
+            "https://api.themoviedb.org/3/authentication/token/new",
+            false,
+            $context
+        );
+
+        $data = json_decode($response, true);
+        $success = $data['success'];
+        
+        $dataToken = [];
+        if($success == "true"){
+            $dataToken['resposta'] = 'Sucesso';
+            $tokenRequest = $data['request_token'];
+            $session = createSession($tokenRequest);
+            return $session;
+        } else {
+            $dataToken['resposta'] = 'Erro ao requisitar Token';
+        }
+        return $dataToken;
+    }
+
+    public function createSession($tokenRequest){
+        $options = [
+            "http" => [
+                "body" => "{$tokenRequest}",
+                "method" => "GET",
+                "header" => [
+                    "Authorization: Bearer $this->token",
+                    "Accept: application/json"
+                ]
+            ]
+        ];
+
+        $context = stream_context_create($options);
+
+        $response = file_get_contents(
+            "https://api.themoviedb.org/3/authentication/session/new",
+            false,
+            $context
+        );
+
+        $data = json_decode($response, true);
+        $success = $data['success'];
+
+        $dataSession = [];
+        if($success == "true"){
+            $dataSession['resposta'] = 'Sucesso';
+            $session = $data['session_id'];
+            return $session;
+        } else {
+            $dataSession['resposta'] = 'Erro ao requisitar Session';
+        }
+        return $dataSession;
+    }
         
     public function listaGeneros(){
         $options = [
@@ -116,52 +184,74 @@
     }
 
     public function ondeAssistir($filmeId){
-
-    $options = [
-        "http" => [
-            "method" => "GET",
-            "header" => [
-                "Authorization: Bearer $this->token",
-                "Accept: application/json"
+        $options = [
+            "http" => [
+                "method" => "GET",
+                "header" => [
+                    "Authorization: Bearer $this->token",
+                    "Accept: application/json"
+                ]
             ]
-        ]
-    ];
+        ];
 
-    $context = stream_context_create($options);
+        $context = stream_context_create($options);
 
-    $response = file_get_contents(
-        "https://api.themoviedb.org/3/movie/{$filmeId}/watch/providers",
-        false,
-        $context
-    );
+        $response = file_get_contents(
+            "https://api.themoviedb.org/3/movie/{$filmeId}/watch/providers",
+            false,
+            $context
+        );
 
-    if (!$response) return 'Não disponível';
+        if (!$response) return [];
 
-    $data = json_decode($response, true);
+        $data = json_decode($response, true);
 
-    $paisUsuario = "BR";
+        $paisUsuario = "BR";
 
-    if (!isset($data['results'][$paisUsuario])) {
-        return 'Não disponível no seu país';
-    }
+        if (!isset($data['results'][$paisUsuario])) {
+            return [];
+        }
 
-    $dadosPais = $data['results'][$paisUsuario];
+        $dadosPais = $data['results'][$paisUsuario];
 
-    $nomes = [];
+        $providers = [];
 
-    foreach (['flatrate','rent','buy'] as $tipo) {
-        if (isset($dadosPais[$tipo])) {
-            foreach ($dadosPais[$tipo] as $provider) {
-                $nomes[] = $provider['provider_name'];
+        foreach (['flatrate','rent','buy'] as $tipo) {
+            if (isset($dadosPais[$tipo])) {
+                foreach ($dadosPais[$tipo] as $provider) {
+                    $providers[] = [
+                        'nome' => $provider['provider_name'],
+                        'logo' => "https://image.tmdb.org/t/p/w200" . $provider['logo_path']
+                    ];
+                }
             }
         }
+
+        return $providers;
     }
 
-    $nomes = array_unique($nomes);
+    public function buscarFilme($movie_id){
+            $options = [
+            "http" => [
+                "method" => "GET",
+                "header" => [
+                    "Authorization: Bearer $this->token",
+                    "Accept: application/json"
+                ]
+            ]
+        ];
 
-    return !empty($nomes)
-        ? implode(', ', $nomes)
-        : 'Não disponível';
-}
+        $context = stream_context_create($options);
+        $idioma = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'en-US';
+
+        $response = file_get_contents(
+            "https://api.themoviedb.org/3/movie/{$movie_id}",
+            false,
+            $context
+        );
+
+        $data = json_decode($response, true);
+        return $data;
+    }
 }
 ?>

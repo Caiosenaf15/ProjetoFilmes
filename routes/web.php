@@ -30,6 +30,28 @@ switch($url) {
         header("Location: /");
         exit;
 
+    case 'providers':
+        require_once __DIR__ . '/../app/controllers/AjaxController.php';
+        $controller = new AjaxController();
+        $controller->providers();
+        break;
+
+    case 'user-movie-action':
+        require_once __DIR__ . '/../app/controllers/AjaxController.php';
+        $controller = new AjaxController();
+        $controller->userMovieAction();
+        break;
+
+    case 'user-movie-status':
+        require_once __DIR__ . '/../app/controllers/AjaxController.php';
+        $controller = new AjaxController();
+        $controller->getUserMovieStatus();
+        break;
+
+    case 'favoritos':
+        require_once __DIR__ . '/../app/views/favoritos.php';
+        break;
+
     case 'categorias':
         require_once __DIR__ . '/../app/views/categorias.php';
         break;

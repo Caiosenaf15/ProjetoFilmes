@@ -272,6 +272,7 @@ require_once __DIR__ . '/../helpers/helper.php';
         <a href="/categorias" class="nav-link-ios">Categorias</a>
         <a href="/filmesPopulares" class="nav-link-ios">Populares</a>
         <a href="/lancamentos" class="nav-link-ios">Próximos lançamentos</a>
+        <a href="/favoritos" class="nav-link-ios">Favoritos</a>
         <div class="search-wrapper">
             <button class="search-toggle" onclick="toggleSearch()">🔍</button>
             <form method="GET" action="/buscar" class="search-form" id="searchForm">
