@@ -9,7 +9,10 @@ class favController{
         $conn = $database->connect();
 
         if(isset($_SESSION['user'])){
+            
             $id = $_SESSION['user'] ?? '';
+            var_dump($id);
+            die();
         }
         
 
