@@ -11,7 +11,8 @@ if( isset($_SESSION['username']) ){
     $dataFavoritos = $con->favoritos();
     $showFilters = false;
     $tmdb = new TmdbService();
-    
+    var_dump($dataFavoritos);
+    die();
     foreach($dataFavoritos as $fav){
         if($fav['favorito'] == 1){
             $filmesFavoritados[] = $tmdb->buscarFilme($fav['movie_id']);
