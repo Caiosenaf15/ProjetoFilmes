@@ -19,7 +19,7 @@ if( isset($_SESSION['username']) ){
     }
     $filmes = $filmesFavoritados;
 }
-
+// aa
 ob_start();
 require __DIR__ . '/../partials/movie_list.php';
 ?>
