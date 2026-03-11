@@ -13,6 +13,7 @@ class favController{
             $id = $_SESSION['user'] ?? '';
             var_dump($id);
             die();
+            
         }
         
 
