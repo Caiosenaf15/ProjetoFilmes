@@ -13,7 +13,7 @@ ob_start();
 
 <?php endif; ?>
 
-<a href="/filmesPopulares">Filmes em alta</a>
+
 
 <?php
 $content = ob_get_clean();

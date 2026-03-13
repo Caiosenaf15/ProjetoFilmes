@@ -253,5 +253,29 @@
         $data = json_decode($response, true);
         return $data;
     }
+
+    public function buscarCategoria($categoria_id){
+            $options = [
+            "http" => [
+                "method" => "GET",
+                "header" => [
+                    "Authorization: Bearer $this->token",
+                    "Accept: application/json"
+                ]
+            ]
+        ];
+
+        $context = stream_context_create($options);
+        $idioma = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'en-US';
+
+        $response = file_get_contents(
+            "https://api.themoviedb.org/3/discover/movie?with_genres={$categoria_id}",
+            false,
+            $context
+        );
+
+        $data = json_decode($response, true);
+        return $data;
+    }
 }
 ?>

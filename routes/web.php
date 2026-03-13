@@ -25,6 +25,10 @@ switch($url) {
         }
         break;
 
+    case 'categoria':
+        require_once __DIR__ . '/../app/views/filtroPorCategoria.php';
+        break;
+
     case 'logout':
         session_destroy();
         header("Location: /");

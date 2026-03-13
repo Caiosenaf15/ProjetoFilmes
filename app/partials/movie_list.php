@@ -5,6 +5,24 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", sans-serif;
     color: #1c1c1e;
 }
+
+.genre_title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 30px 0;
+    position: relative;
+}
+
+.genre_title::after {
+    content: "";
+    width: 80px;
+    height: 3px;
+    background: red;
+    display: block;
+    margin: 10px auto 0;
+}
+
 .modal-background {
     display: none;
     position: fixed;
@@ -468,6 +486,10 @@ if (!isset($filmes)) {
     return;
 }
 ?>
+
+<?php if (isset($categoria)): ?>
+    <h2 class='genre_title'> <?=$categoria?> </h2>
+<?php endif; ?>
 
 <?php if (isset($showFilters) && $showFilters): ?>
 <div class="filter-bar">
