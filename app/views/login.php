@@ -6,7 +6,7 @@ ob_start();
 <div class="d-flex flex-column align-items-center justify-content-center min-vh-100">
 
     <?php if (isset($_SESSION['flash'])): ?>
-        <div class="alert alert-danger alert-dismissible fade show text-center mb-4" style="width: 400px;" role="alert">
+        <div class="alert alert-success alert-dismissible fade show text-center mb-4" style="width: 400px;" role="alert">
             <?= htmlspecialchars($_SESSION['flash']); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>

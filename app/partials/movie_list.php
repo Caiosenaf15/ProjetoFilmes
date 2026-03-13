@@ -501,7 +501,6 @@ if (!isset($filmes)) {
             <span class="slider"></span>
         </label>
     </div>
-
     <div>
         <strong>Ordenação</strong><br>
         <div class="segmented">

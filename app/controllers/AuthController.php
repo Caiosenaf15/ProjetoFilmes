@@ -16,7 +16,7 @@ class AuthController {
         $user = trim($_POST['email_user'] ?? '');
         $password = $_POST['password'] ?? '';
 
-        $sql = "SELECT id, username, senha FROM users WHERE username = :username";
+        $sql = "SELECT id, username, senha, idade FROM users WHERE username = :username";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':username', $user);
         $stmt->execute();
@@ -28,6 +28,7 @@ class AuthController {
 
             $_SESSION['user'] = $user['id'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['dataNasc'] = $user['idade'];
 
             $_SESSION['flash'] = "Login realizado com sucesso!";
             header("Location: /");
