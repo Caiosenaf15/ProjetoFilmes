@@ -15,7 +15,6 @@ $response = $tmdb->buscarCategoria($categoria_id);
 $filmes = $response['results'] ?? [];
 $totalPages = $response['total_pages'] ?? 1;
 
-
 $showFilters = false;
 ob_start();
 require __DIR__ . '/../partials/movie_list.php';
